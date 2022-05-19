@@ -39,38 +39,44 @@ class _SearchFieldState extends State<SearchField> {
       children: [
         SizedBox(
           width: (width * 0.8),
-          child: TextField(
-            controller: myController,
-            decoration: const InputDecoration(
-              hintText: 'Enter to search',
-              filled: true,
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black54, width: 1),
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
+          child: GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: TextField(
+              onTap: () {},
+              onEditingComplete: (() =>
+                  userBloc.add(UserPhotoSearchEvent(myController.text))),
+              controller: myController,
+              decoration: const InputDecoration(
+                hintText: 'Enter to search',
+                filled: true,
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black54, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(25))),
+              ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 15,
-        ),
-        OutlinedButton(
-          onPressed: () {
-            userBloc.add(UserPhotoSearchEvent(myController.text));
-          },
-          child: Text(
-            "Search",
-            style: TextStyle(fontSize: 20, color: Colors.black87),
-          ),
-          style: OutlinedButton.styleFrom(
-            minimumSize: const Size(200, 50),
-            backgroundColor: Colors.white,
-            side: BorderSide(width: 1, color: Colors.black45),
-            shape: StadiumBorder(),
-          ),
-        ),
+        // const SizedBox(
+        //   height: 15,
+        // ),
+        // OutlinedButton(
+        //   onPressed: () {},
+        //   child: Text(
+        //     "Search",
+        //     style: TextStyle(fontSize: 20, color: Colors.black87),
+        //   ),
+        //   style: OutlinedButton.styleFrom(
+        //     minimumSize: const Size(200, 50),
+        //     backgroundColor: Colors.white,
+        //     side: BorderSide(width: 1, color: Colors.black45),
+        //     shape: StadiumBorder(),
+        //   ),
+        // ),
       ],
     );
   }
