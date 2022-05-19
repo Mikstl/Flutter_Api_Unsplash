@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unsplash_gallery_api/services/photo_user_repository.dart';
 
 import '../bloc/user_block.dart';
-import '../services/photo_user_repository.dart';
+import '../bloc/user_event.dart';
 import '../widgets/search_field.dart';
 import '../widgets/photo_list.dart';
 
 class HomePage extends StatelessWidget {
-  final photoUsersRepository = PhotoUsersRepository();
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var height = size.height;
     var width = size.width;
+    PhotoUsersRepository photoUsersRepository = PhotoUsersRepository();
+
     return BlocProvider<UserBloc>(
-        create: (context) => UserBloc(photoUsersRepository),
+        create: (context) =>
+            UserBloc(photoUsersRepository)..add(UserPhotoLoadEvent()),
         child: Scaffold(
             backgroundColor: Colors.white,
             body: Column(

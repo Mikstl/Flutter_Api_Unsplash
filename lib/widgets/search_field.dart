@@ -26,8 +26,6 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     // Иницализация нашего Bloc с UI пользователя
     final UserBloc userBloc = BlocProvider.of<UserBloc>(context);
-    // Запуск нашего ивента в Bloc
-    userBloc.add(UserPhotoLoadEvent());
 
     // Получение ширины и высоты с нашего устройства для установки динамических значений
     var size = MediaQuery.of(context).size;
@@ -39,25 +37,19 @@ class _SearchFieldState extends State<SearchField> {
       children: [
         SizedBox(
           width: (width * 0.8),
-          child: GestureDetector(
-            onTap: () {
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            child: TextField(
-              onTap: () {},
-              onEditingComplete: (() =>
-                  userBloc.add(UserPhotoSearchEvent(myController.text))),
-              controller: myController,
-              decoration: const InputDecoration(
-                hintText: 'Enter to search',
-                filled: true,
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                    borderRadius: BorderRadius.all(Radius.circular(25))),
-              ),
+          child: TextField(
+            onEditingComplete: (() =>
+                userBloc.add(UserPhotoSearchEvent(myController.text))),
+            controller: myController,
+            decoration: const InputDecoration(
+              hintText: 'Enter to search',
+              filled: true,
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black54, width: 1),
+                  borderRadius: BorderRadius.all(Radius.circular(25))),
             ),
           ),
         ),

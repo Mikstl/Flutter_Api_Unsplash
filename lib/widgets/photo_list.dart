@@ -4,21 +4,16 @@ import 'package:unsplash_gallery_api/bloc/user_state.dart';
 
 import '../bloc/user_block.dart';
 
-class PhotoList extends StatefulWidget {
+class PhotoList extends StatelessWidget {
   const PhotoList({Key? key}) : super(key: key);
 
-  @override
-  State<PhotoList> createState() => _PhotoListState();
-}
-
-class _PhotoListState extends State<PhotoList> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state is UserEmptyState) {
           return Container(
-            child: const Text('The list is empty',
+            child: Text("state.zalupa",
                 style: TextStyle(
                     color: Color(0xff111111),
                     fontSize: 30,

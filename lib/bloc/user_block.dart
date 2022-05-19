@@ -9,7 +9,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   PhotoUsersRepository photoUsersRepository;
 
   UserBloc(this.photoUsersRepository) : super(UserEmptyState()) {
-    // Load default pictures
+    // Load default pictures4
     on<UserPhotoLoadEvent>((event, emit) async {
       emit(UserLoadingState());
       try {
@@ -20,11 +20,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       } catch (_) {
         emit(UserErrorState());
       }
-    });
-
-    // Clear
-    on<UserClearEvent>((event, emit) async {
-      emit(UserEmptyState());
     });
 
     // Search
