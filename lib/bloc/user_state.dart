@@ -22,6 +22,8 @@ class UserEmptyState extends UserState {
   // }
 }
 
+class UserNotFoundPicture extends UserState {}
+
 class UserLoadingState extends UserState {}
 
 class UserLoadedState extends UserState {

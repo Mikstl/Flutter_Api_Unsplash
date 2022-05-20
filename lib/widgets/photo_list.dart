@@ -110,8 +110,20 @@ class PhotoList extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
           );
         }
+
+        if (state is UserNotFoundPicture) {
+          return Container(
+            child: const Text('No pictures found',
+                style: TextStyle(
+                    color: Color(0xff111111),
+                    fontSize: 30,
+                    fontWeight: FontWeight.w400)),
+            margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
+          );
+        }
+
         return Container(
-          child: const Text('Crash error',
+          child: const Text('How you did this?',
               style: TextStyle(
                   color: Color(0xff111111),
                   fontSize: 30,

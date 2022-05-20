@@ -15,7 +15,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         final List<PhotoUser> _loadedUserList =
             await photoUsersRepository.getAllPhotoUsers();
-
         emit(UserLoadedState(loadedUser: _loadedUserList));
       } catch (_) {
         emit(UserErrorState());
@@ -28,9 +27,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         final List<PhotoUser> _loadedUserSearchList =
             await photoUsersRepository.getAllPhotoSearchUsers(event.search);
-
-        emit(UserLoadedSearchState(loadedSearchUser: _loadedUserSearchList));
-      } catch (_) {
+        if (_loadedUserSearchList.isEmpty) {
+          emit(UserNotFoundPicture());
+        } else {
+          emit(UserLoadedSearchState(loadedSearchUser: _loadedUserSearchList));
+        }
+      } catch (e) {
         emit(UserErrorState());
       }
     });
