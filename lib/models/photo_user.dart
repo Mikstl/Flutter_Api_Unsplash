@@ -17,8 +17,10 @@ class PhotoUser {
   String? id;
   String? user;
   String? picture;
+  String? pictureAvatar;
+  String? likes;
 
-  PhotoUser({this.id, this.picture, this.user});
+  PhotoUser({this.id, this.picture, this.user, this.pictureAvatar, this.likes});
 
   factory PhotoUser.fromJson(Map<String, dynamic> json) {
     // print(json["id"]);
@@ -26,10 +28,11 @@ class PhotoUser {
     // print(json['urls']["regular"]);
 
     return PhotoUser(
-      id: json['id'],
-      user: json['user']["username"],
-      picture: json['urls']["regular"],
-    );
+        id: json['id'],
+        user: json['user']["username"],
+        picture: json['urls']["regular"],
+        pictureAvatar: json['user']["profile_image"]["large"],
+        likes: json['color'].toString());
   }
 }
 

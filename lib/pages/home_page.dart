@@ -24,11 +24,11 @@ class HomePage extends StatelessWidget {
               //
               children: [
                 SizedBox(
-                  height: (height * 0.10),
+                  height: (height * 0.08),
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(bottom: 20, left: 20),
+                  margin: EdgeInsets.only(bottom: 10, left: 20),
                   child: const Text("Unsplash API",
                       textAlign: TextAlign.left,
                       style: TextStyle(
@@ -37,12 +37,12 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.w500)),
                 ),
                 Container(
-                  child: SearchField(),
+                  child: const SearchField(),
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.only(left: 20),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Expanded(
                   child: PhotoList(),
