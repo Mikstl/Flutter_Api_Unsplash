@@ -29,11 +29,11 @@ class HomePage extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.only(bottom: 10, left: 20),
-                  child: const Text("Unsplash API",
+                  child: Text("Unsplash API",
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Color(0xff111111),
-                          fontSize: 40,
+                          fontSize: width * 0.09,
                           fontWeight: FontWeight.w500)),
                 ),
                 Container(
