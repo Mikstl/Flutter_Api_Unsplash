@@ -4,22 +4,6 @@ import '../services/photo_user_repository.dart';
 abstract class UserState {}
 
 class UserEmptyState extends UserState {
-  // var zalupa;
-  // PhotoUsersRepository photoUsersRepository = PhotoUsersRepository();
-
-  // UserEmptyState() {
-  //   var futureList = getEarlyPhotoUsersList();
-  //   print(futureList);
-  // }
-
-  // Future<List<PhotoUser>> getEarlyPhotoUsersList() async {
-  //   final List<PhotoUser> loadedUserList =
-  //       await photoUsersRepository.getAllPhotoUsers();
-
-  //   zalupa = loadedUserList;
-  //   print(zalupa);
-  //   return loadedUserList;
-  // }
 }
 
 class UserNotFoundPicture extends UserState {}
